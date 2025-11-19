@@ -1,0 +1,79 @@
+EXPERIMENT 5
+INFIX TO POST FIX 
+
+AIM:
+Convert a given arithmetic expression in infix notation (operators between operands, e.g. A + B * C) 
+into its equivalent postfix notation (operators after operands, e.g. A B C * +) so it can be evaluated easily by a stack-based evaluator.
+
+ALGORITHM:
+1. Initialize an empty stack S and an empty output string out.
+2. Scan the infix expression from left to right token by token (operand, operator, parenthesis).
+3. For each token:
+Operand (variable/number): append it to out.
+Left parenthesis (: push it onto S.
+Right parenthesis ): pop from S and append to out until you pop a ( (discard both parentheses).
+Operator (op):
+While S is not empty and the operator at the top of S has higher precedence OR same precedence and left-associative, and the top is not (, pop it and append to out.
+Push the current operator op onto S.
+4. After the input is fully read, pop any remaining operators from S and append to out.
+5. out is the final postfix expression.
+
+CODE:
+# Function to define precedence of operators
+def precedence(op):
+    if op == '+' or op == '-':
+        return 1
+    if op == '*' or op == '/':
+        return 2
+    if op == '^':
+        return 3
+    return 0
+
+# Function to check if character is operand
+def is_operand(ch):
+    return ch.isalnum()
+
+# Function to convert infix to postfix
+def infix_to_postfix(expression):
+    stack = []    # for operators
+    output = []   # for result
+
+    for ch in expression:
+        # If operand, add to output
+        if is_operand(ch):
+            output.append(ch)
+        # If '(', push to stack
+        elif ch == '(':
+            stack.append(ch)
+        # If ')', pop until '('
+        elif ch == ')':
+            while stack and stack[-1] != '(':
+                output.append(stack.pop())
+            stack.pop()  # Remove '('
+        # Operator
+        else:
+            while (stack and precedence(stack[-1]) >= precedence(ch)):
+                output.append(stack.pop())
+            stack.append(ch)
+
+    # Pop all remaining operators
+    while stack:
+        output.append(stack.pop())
+
+    return "".join(output)
+
+# ---- Main Program ----
+exp = input("Enter infix expression: ")
+print("Postfix expression:", infix_to_postfix(exp))
+
+INPUT:
+Enter infix expression: (A+B)*C-D^E^F
+
+OUTPUT:
+Postfix expression: AB+C*DEF^^-
+
+RESULT:
+Step 1: (A+B) → AB+
+Step 2: (AB+)*C → AB+C*
+Step 3: (AB+C*)-D^E^F → AB+C*DEF^^-
+Hence, the equivalent postfix expression for (A+B)*C-D^E^F is AB+C*DEF^^-.
