@@ -1,0 +1,72 @@
+EXPERIMENT:2
+Binary search:
+
+
+AIM:
+To write a program to search for a given element in an array using the Binary Search technique.
+
+ALGORITHM:
+1. Start the program.
+2. Initialize an array of sorted elements.
+3. Read the number of elements, n.
+4. Read the n sorted elements into the array.
+5. Read the element to be searched, say key.
+6. Initialize two variables:
+low = 0
+high = n - 1
+7. Repeat the following steps while low <= high:
+Find the middle index: mid = (low + high) // 2
+If array[mid] == key, then
+Print “Element found at position mid + 1”
+Stop the search.
+Else if array[mid] > key, the,
+Set high = mid - 1,
+Else
+Set low = mid + 1.
+8. If the element is not found, print “Element not found”.
+9. Stop the program.
+
+CODE:
+#include <stdio.h>
+
+int main() {
+    int A[] = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+    int n = sizeof(A) / sizeof(A[0]);
+    int low = 0;
+    int high = n - 1;
+    int key;
+    int found = 0;
+
+    printf("Enter the element to search: ");
+    scanf("%d", &key);
+
+    while (low <= high) {
+        int mid = (low + high) / 2;
+        if (A[mid] == key) {
+            printf("Element found at position: %d\n", mid + 1);
+            found = 1;
+            break;
+        } else if (A[mid] < key) {
+            low = mid + 1;
+        } else {
+            high = mid - 1;
+        }
+    }
+
+    if (!found) {
+        printf("Element not found in the array.\n");
+    }
+
+    return 0;
+}
+
+INPUT:
+Enter number of elements: 5
+Enter sorted elements: 10 20 30 40 50
+Enter element to search: 40
+
+OUTPUT:
+Element not found 
+
+RESULT:
+Thus, the program to search for a given element using the Binary Search technique was successfully executed and verified.
