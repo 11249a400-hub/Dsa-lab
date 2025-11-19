@@ -1,0 +1,61 @@
+Experiment 1
+LINEAR SEARCH :
+
+Aim:
+To write a program to search for a given element in a list (or array) using the Linear Search technique.
+
+Algorithm:
+1.Start
+2. Input the number of elements in the array.
+3. Read all the elements of the array.
+4. Input the element to be searched (key).
+5. Set a flag variable (e.g., found = 0).
+6. Repeat from index i = 0 to n - 1:
+If array[i] == key, then
+Set found = 1
+7.Print “Element found at position i+1”
+8.Stop the search.
+
+CODE:
+#include <stdio.h>
+
+int main() {
+    int n, i, key, found = 0;
+    
+    printf("Enter the size of array: ");
+    scanf("%d", &n);
+  int A[n]
+    
+    printf("Enter./.d the elements of the array: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
+    
+    printf("Enter the element to search: ");
+    scanf("%d", &key);
+    
+    for (i = 0; i < n; i++) {
+        if (a[i] == key) {
+            printf("Element found at position %d\n", i + 1);
+            found = 1;
+            break;
+        }
+    }
+    
+    if (!found) {
+        printf("Element not found in the array.\n");
+    }
+    
+    return 0;
+}
+
+INPUT:
+Enter number of elements: 5
+Enter elements: 10 20 30 40 50
+Enter element to search: 30
+
+OUTPUT:
+Element found at position 3
+
+RESULT:
+Thus, the program to search for a given element using the Linear Search technique was successfully executed and verified.
