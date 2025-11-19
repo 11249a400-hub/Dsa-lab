@@ -1,0 +1,66 @@
+experiment 7
+ENQUE operation:
+
+AIM:
+
+To study and implement the enqueue operation in a queue data structure using an array, where an element is inserted at the rear end of the queue.
+
+
+ALGORITHM:
+
+Step 1: Start
+Step 2: Check if rear == MAX-1
+  • If TRUE → Queue is FULL → Overflow
+  • If FALSE → Continue
+Step 3: If front == -1, set front = 0
+Step 4: Increment rear = rear + 1
+Step 5: Insert the element at queue[rear]
+Step 6: Stop
+
+
+---
+
+
+CODE:
+
+
+#include <stdio.h>
+#define size 5
+
+int queue[size];
+int front = -1;
+int rear = -1;
+
+void enqueue(int val) {
+    if (rear == size - 1) {
+        printf("Queue is full, cannot insert\\n");
+    } else {
+        if (front == -1)
+            front = 0;
+        rear++;
+        queue[rear] = val;
+        printf("%d inserted into queue\\n", val);
+    }
+}
+
+int main() {
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    enqueue(40);
+    enqueue(8);
+    return 0;
+}
+
+OUTPUT:
+
+10 inserted into queue
+20 inserted into queue
+30 inserted into queue
+40 inserted into queue
+8 inserted into queue
+
+RESULT :
+
+The enqueue operation was successfully implemented using an array.
+Elements were inserted at the rear end of the queue and the contents of the queue were displayed correctly.
