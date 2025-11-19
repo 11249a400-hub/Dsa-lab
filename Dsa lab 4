@@ -1,0 +1,96 @@
+EXPERIMENT 4
+REVERSE STRING USING STACK 
+
+AIM:
+To write a program that reverses a given string using the stack data structure.
+
+ALGORITHM:
+1. Start
+2. Initialize an empty stack.
+3. Input the string to be reversed.
+4. Push each character of the string onto the stack one by one.
+5. Pop each character from the stack and append it to a new string.
+Since the stack works on the LIFO (Last In, First Out) principle, popping characters will give the reversed order.
+6. Display the reversed string.
+7. Stop
+
+CODE:
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX 100
+
+char STACK[MAX];
+int TOP = -1;
+
+void push(char item) {
+print (" there are./.d elements in stack./n",top+1);
+for(int i=top; i>=0;i++)
+{
+    if (TOP == MAX - 1) {
+        printf("Stack is overflow\n");
+    } else {
+        TOP = TOP + 1;
+        STACK[TOP] = item;
+    }
+}
+
+char pop() {
+    if (TOP == -1) {
+        printf("Stack is underflow\n");
+        return '\0';
+    } else {
+        char item = STACK[TOP];
+        TOP = TOP - 1;
+        return item;
+    }
+}
+
+void display() {
+    if (TOP == -1) {
+        printf("Stack is empty\n");
+char pop()
+{
+char item;
+if(top==-1)
+{
+printf(" stack is inder flow/ empty/n")
+return\0:
+    } 
+else
+{
+       printf("There are %d elements in stack:\n", TOP + 1);
+        for (int i = TOP; i >= 0; i--) {
+            printf("%c\n", STACK[i]);
+        }
+    }
+}
+
+int main() {
+    char str[MAX];
+    printf("Enter a string: ");
+    gets(str);
+
+    int i;
+    for (i = 0; i < strlen(str); i++) {
+        push(str[i]);
+    }
+
+    printf("Reversed string: ");
+    while (TOP != -1) {
+        printf("%c", pop());
+    }
+    printf("\n");
+
+    return 0;
+}
+
+INPUT:
+Enter a string: HELLO
+
+OUTPUT:
+Reversed string: OLLEH
+
+RESULT:
+The program successfully reverses a given string using a stack by utilizing the LIFO principle.
