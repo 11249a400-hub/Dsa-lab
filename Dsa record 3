@@ -1,0 +1,98 @@
+EXPERIMENT 3
+stack
+
+AIM:
+To write a program to implement Stack operations such as Push, Pop, and Display using an array.
+
+ALGORITHM:
+1.Start the program.
+2. Initialize an empty stack and set top = -1.
+3. Display menu with the following operations:
+1. Push
+2. Pop
+3. Display
+4. Exit
+4. For Push operation:
+If top == MAX - 1, print “Stack Overflow”.
+Else, increment top by 1 and insert the new element at stack[top].
+5. For Pop operation:If top == -1, print “Stack Underflow”.
+Else, print the deleted element stack[top] and decrement top by 1.
+6. For Display operation:
+If top == -1, print “Stack is empty”.
+Else, print all elements from top to 0.
+7. Repeat steps 3–6 until the user selects Exit.
+8. Stop the program.
+
+CODE:
+#include <stdio.h>
+#include <stdlib.h>
+
+#define SIZE 100
+
+int stack[SIZE];
+int top = -1;
+choice,item,stack[top]
+
+void push(int item) {
+    if (top == SIZE - 1) {
+        printf("Stack Overflow\n");
+    } else {
+        top++;
+        stack[top] = item;
+    }
+}
+
+int pop() {
+    if (top == -1) {
+        printf("Stack Underflow\n");
+        return -1; // Or some other error indicator
+    } else {
+        int item = stack[top];
+        top--;
+        return item;
+    }
+}
+
+void display() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements are:\n");
+        for (int i = top; i >= 0; i--) {
+            printf("%d\n", stack[i]);
+        }
+    }
+}
+
+int main() {
+    int choice, item;
+
+    while (1) {
+        printf("\n1. Push\n");
+        printf("2. Pop\n");
+        printf("3. Display\n");
+        printf("4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter the value to push: ");
+                scanf("%d", &item);
+                push(item);
+                break;
+            case 2:
+                item = pop();
+                if (item != -1) {
+                    printf("Popped item is: %d\n", item);
+                }
+                break;
+            
+             case 3:
+                exit(0);
+            default:
+                printf("Incorrct option");
+          break;
+        }
+    }
+    return 0;
